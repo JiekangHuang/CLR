@@ -23,5 +23,19 @@
     <ClInclude Include="MyForm.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="Mybutton.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Infix_to_Postfix.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Postfix_Evaluation.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <Filter>資源檔</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
