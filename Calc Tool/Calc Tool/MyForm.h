@@ -83,6 +83,7 @@ namespace CalcTool {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->ans = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			//
@@ -110,8 +111,10 @@ namespace CalcTool {
 			this->ClientSize = System::Drawing::Size(282, 414);
 			this->Controls->Add(this->ans);
 			this->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"Calc Tool";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

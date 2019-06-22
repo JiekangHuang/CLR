@@ -57,13 +57,13 @@ namespace ChessGame {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->reset = (gcnew System::Windows::Forms::Button());
 			this->Exit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			//
+			// 
 			// reset
-			//
+			// 
 			this->reset->BackColor = System::Drawing::Color::Tan;
 			this->reset->Font = (gcnew System::Drawing::Font(L"標楷體", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(136)));
@@ -75,9 +75,9 @@ namespace ChessGame {
 			this->reset->Text = L"重新開始";
 			this->reset->UseVisualStyleBackColor = false;
 			this->reset->Click += gcnew System::EventHandler(this, &MyForm::reset_Click);
-			//
+			// 
 			// Exit
-			//
+			// 
 			this->Exit->BackColor = System::Drawing::Color::Tan;
 			this->Exit->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Exit->Font = (gcnew System::Drawing::Font(L"標楷體", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -90,9 +90,9 @@ namespace ChessGame {
 			this->Exit->Text = L"結束";
 			this->Exit->UseVisualStyleBackColor = false;
 			this->Exit->Click += gcnew System::EventHandler(this, &MyForm::Exit_Click);
-			//
+			// 
 			// MyForm
-			//
+			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
@@ -108,6 +108,7 @@ namespace ChessGame {
 			this->Text = L"Chess Game";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	private: System::Void reset_Click(System::Object^  sender, System::EventArgs^  e)
