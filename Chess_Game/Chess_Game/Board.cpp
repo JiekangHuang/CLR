@@ -92,7 +92,7 @@ void Board::Init(void)
 	this->isFirst = true;
 
 	//建立32個亂數
-	Random ^Rand = gcnew Random();
+	Random^ Rand = gcnew Random();
 
 	std::vector<int> vec;
 	int s_num = Chess_num - 1, idx = 0;;
@@ -120,7 +120,7 @@ void Board::Init(void)
 }
 void Board::Action(int idx_x, int idx_y)
 {
-	Piece ^cur_piece = this->piece[idx_x][idx_y];
+	Piece^ cur_piece = this->piece[idx_x][idx_y];
 
 	if (!cur_piece->Is_Open())
 	{
@@ -151,7 +151,7 @@ void Board::Action(int idx_x, int idx_y)
 		}
 		else
 		{
-			Piece ^dead = this->pre_piece->Attack(cur_piece);
+			Piece^ dead = this->pre_piece->Attack(cur_piece);
 			if (dead != nullptr)
 			{
 				this->pre_piece->Remove();
@@ -172,7 +172,7 @@ void Board::Action(int idx_x, int idx_y)
 		}
 	}
 }
-void Board::Exch(Piece ^first)
+void Board::Exch(Piece ^ first)
 {
 	if (this->isFirst)
 		this->cur_pyer = first->Get_Color();
@@ -188,11 +188,11 @@ void Board::Exch(Piece ^first)
 	}
 	this->isFirst = false;
 }
-array<array<Piece^>^> ^Board::Get_Piece()
+array<array<Piece^>^>^ Board::Get_Piece()
 {
 	return this->piece;
 }
-Button ^Board::Get_curPyShow()
+Button^ Board::Get_curPyShow()
 {
 	return this->curPyShow;
 }
@@ -201,21 +201,21 @@ bool Board::Is_Win()
 {
 	if (rNum == 0)
 	{
-		MessageBox::Show("紅軍獲勝 !!");
+		MessageBox::Show("黑軍獲勝 !!");
 		return true;
 	}
 	else if (bNum == 0)
 	{
-		MessageBox::Show("黑軍獲勝 !!");
+		MessageBox::Show("紅軍獲勝 !!");
 		return true;
 	}
 	return false;
 }
-array<PictureBox^> ^Board::Get_L_dead()
+array<PictureBox^>^ Board::Get_L_dead()
 {
 	return this->L_dead;
 }
-array<PictureBox^> ^Board::Get_R_dead()
+array<PictureBox^>^ Board::Get_R_dead()
 {
 	return this->R_dead;
 }
