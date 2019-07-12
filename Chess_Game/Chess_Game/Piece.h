@@ -16,7 +16,8 @@ private:
 	String ^color;
 	//棋子大小
 	int power;
-
+	//是否為空棋
+	bool empty;
 	//棋子開/蓋狀態
 	bool open;
 	//棋子在棋盤上的位置
@@ -41,6 +42,7 @@ public:
 	bool Is_Move(Piece ^cur);
 	bool Is_My(String ^cur_pyer);
 	bool Is_Empty();
+	bool Back_Is_Empty();
 
 	void Open();
 	void Move(Piece ^cur);

@@ -143,6 +143,11 @@ bool Piece::Is_Empty()
 	return this->Image == nullptr;
 }
 
+bool Piece::Back_Is_Empty()
+{
+	return this->BackColor == Color::Transparent;
+}
+
 bool Piece::Is_Move(Piece ^ cur)
 {
 	int sum = abs(this->Get_idx_x() - cur->Get_idx_x()) + abs(this->Get_idx_y() - cur->Get_idx_y());

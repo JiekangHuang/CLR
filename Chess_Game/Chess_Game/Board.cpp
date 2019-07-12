@@ -126,10 +126,10 @@ void Board::Action(int idx_x, int idx_y)
 	{
 		cur_piece->Open();
 		this->Exch(cur_piece);
-		if (!pre_piece->Is_Empty())
+		if (!pre_piece->Back_Is_Empty())
 			pre_piece->Clear();
 	}
-	else if (this->pre_piece->Is_Empty())
+	else if (this->pre_piece->Back_Is_Empty())
 	{
 		if (cur_piece->Is_My(cur_pyer))
 			this->pre_piece = cur_piece->Select();
