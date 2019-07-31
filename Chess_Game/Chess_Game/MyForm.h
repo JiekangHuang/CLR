@@ -57,7 +57,7 @@ namespace ChessGame {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->reset = (gcnew System::Windows::Forms::Button());
 			this->Exit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -102,6 +102,7 @@ namespace ChessGame {
 			this->Controls->Add(this->Exit);
 			this->Controls->Add(this->reset);
 			this->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";

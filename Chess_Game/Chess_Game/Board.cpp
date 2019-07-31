@@ -63,7 +63,7 @@ Board::Board()
 		for (int j = 0; j < 2; j++)
 		{
 			L_dead[idx] = gcnew PictureBox;
-			L_dead[idx]->Location = System::Drawing::Point(_Lstatic_x + _add_x * j, _static_y + _add_y * i);
+			L_dead[idx]->Location = Point(_Lstatic_x + _add_x * j, _static_y + _add_y * i);
 			L_dead[idx]->Size = System::Drawing::Size(50, 50);
 			L_dead[idx]->BackColor = Color::Transparent;
 			L_dead[idx]->BackgroundImageLayout = ImageLayout::Stretch;
