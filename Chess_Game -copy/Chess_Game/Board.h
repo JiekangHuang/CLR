@@ -49,15 +49,13 @@ private:
 	void Exch(Piece ^first);
 	//是否有贏
 	bool Is_Win();
-	//尋找對應棋子
-
-	Piece ^Find(int x, int y);
 public:
 	Board();
 	//初始化棋盤(洗牌)
 	void Init(void);
 	//觸發棋子
 	void Action(int x, int y);
+	void Action(Piece ^cur);
 	//傳回棋子物件的集合
 	array<array<Piece^>^> ^Get_Piece();
 	//傳回玩家顯示物件

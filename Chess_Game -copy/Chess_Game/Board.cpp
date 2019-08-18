@@ -67,10 +67,10 @@ Board::Board()
 		this->init_piece[30] = (gcnew Const_Piece(Image::FromFile("Image\\2-7.png"), "black", 0));
 		this->init_piece[31] = (gcnew Const_Piece(Image::FromFile("Image\\2-7.png"), "black", 0));
 	}
+
 	piece = gcnew array<array<Piece^>^>(4);
 	for (int i = 0; i < Row; i++)
 		piece[i] = gcnew array<Piece^>(8);
-
 	this->Init();
 }
 void Board::Init(void)
@@ -86,7 +86,7 @@ void Board::Init(void)
 
 	for (int r = 0; r < Row; r++)
 		for (int c = 0; c < Col; c++)
-			this->piece[r][c] = (gcnew Piece(r, c));
+			this->piece[r][c] = gcnew Piece(r, c);
 
 	//建立32個亂數
 	Random^ Rand = gcnew Random();
@@ -112,64 +112,69 @@ void Board::Init(void)
 }
 void Board::Action(int x, int y)
 {
-	int r = -1, c = -1;
-	for (int i = 0; i < Col; i++)
-		if (x > Loca_c[i])
-			c = i;
-	for (int i = 0; i < Row; i++)
-		if (y > Loca_r[i])
-			r = i;
-	if (r != -1 && c != -1)
+	if (x > Loca_c[0] && x < Loca_c[7] + (Loca_c[7] - Loca_c[6]) && y>Loca_r[0] && y < Loca_r[3] + (Loca_r[3] - Loca_r[2]))
 	{
-		Piece^ cur_piece = this->Find(x, y);
-		if (!cur_piece->Is_Open())
+		int r = -1, c = -1;
+		for (int i = 0; i < Col; i++)
+			if (x > Loca_c[i])
+				c = i;
+		for (int i = 0; i < Row; i++)
+			if (y > Loca_r[i])
+				r = i;
+		if (!this->pre_piece->Back_Is_Empty() && pre_piece->Is_My(cur_pyer) && this->pre_piece->Is_Move(r, c))
 		{
-			cur_piece->Open();
-			this->Exch(cur_piece);
-			if (!pre_piece->Back_Is_Empty())
-				pre_piece->Clear();
+			this->pre_piece->Move(r, c);
+			this->Exch(pre_piece);
 		}
-		else if (this->pre_piece->Back_Is_Empty())
-		{
-			if (cur_piece->Is_My(cur_pyer))
-				this->pre_piece = cur_piece->Select();
-		}
-		else
-		{
-			if (cur_piece->Is_My(cur_pyer))
-			{
-				this->pre_piece->Clear();
-				this->pre_piece = cur_piece->Select();
-			}
-			else if (this->pre_piece->Attack(cur_piece))
-			{
-				int x, y;
-				if (cur_piece->Get_Color() == "red")
-				{
-					x = this->L_dead[16 - this->rNum]->x;
-					y = this->L_dead[16 - this->rNum]->y;
-					this->rNum--;
-				}
-				else
-				{
-					x = this->R_dead[16 - this->bNum]->x;
-					y = this->R_dead[16 - this->bNum]->y;
-					this->bNum--;
-				}
-				cur_piece->Location = Point(x, y);
-				this->pre_piece->Move(r, c);
-				this->Exch(cur_piece);
-				if (this->Is_Win())
-					this->Init();
-			}
-		}
-	}
-	else if (!this->pre_piece->Back_Is_Empty() && this->pre_piece->Is_Move(r, c))
-	{
-		this->pre_piece->Move(r, c);
-		this->Exch(pre_piece);
 	}
 }
+void Board::Action(Piece ^cur)
+{
+	Piece^ cur_piece = cur;
+	if (!cur_piece->Is_Open())
+	{
+		cur_piece->Open();
+		this->Exch(cur_piece);
+		if (!pre_piece->Back_Is_Empty())
+			pre_piece->Clear();
+	}
+	else if (this->pre_piece->Back_Is_Empty())
+	{
+		if (cur_piece->Is_My(cur_pyer))
+			this->pre_piece = cur_piece->Select();
+	}
+	else
+	{
+		if (cur_piece->Is_My(cur_pyer))
+		{
+			this->pre_piece->Clear();
+			this->pre_piece = cur_piece->Select();
+		}
+		else if (this->pre_piece->Attack(cur_piece))
+		{
+			int x, y;
+			if (cur_piece->Get_Color() == "red")
+			{
+				x = this->L_dead[16 - this->rNum]->x;
+				y = this->L_dead[16 - this->rNum]->y;
+				this->rNum--;
+			}
+			else
+			{
+				x = this->R_dead[16 - this->bNum]->x;
+				y = this->R_dead[16 - this->bNum]->y;
+				this->bNum--;
+			}
+			cur_piece->Location = Point(x, y);
+			cur_piece->Size = System::Drawing::Size(50, 50);
+			this->pre_piece->Move(cur_piece->Get_row(), cur_piece->Get_col());
+			this->Exch(cur_piece);
+			if (this->Is_Win())
+				this->Init();
+		}
+	}
+}
+
 void Board::Exch(Piece ^ first)
 {
 	if (this->isFirst)
@@ -208,11 +213,4 @@ bool Board::Is_Win()
 		return true;
 	}
 	return false;
-}
-Piece ^Board::Find(int r, int c)
-{
-	for (int i = 0; i < Row; i++)
-		for (int j = 0; j < Col; j++)
-			if (piece[i][j]->Get_col() == c && piece[i][j]->Get_col() == r)
-				return piece[i][j];
 }

@@ -33,9 +33,7 @@ void Piece::Init()
 		map[i] = gcnew array<bool>(8);
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 8; j++)
-		{
 			map[i][j] = true;
-		}
 
 	this->image = nullptr;
 	this->color = "";
@@ -77,17 +75,17 @@ bool Piece::Attack(Piece ^victim)
 		if (this_c == vic_c)
 		{
 			if (this_r > vic_r)
-				Swch(this_c, this_r);
+				Swch(this_r, vic_r);
 			for (int i = this_r + 1; i < vic_r; i++)
-				if (map[this_c][i] == true)
+				if (map[i][this_c] == true)
 					++sum;
 		}
 		else if (this_r == vic_r)
 		{
 			if (this_c > vic_c)
-				Swch(this_c, this_r);
+				Swch(this_c, vic_c);
 			for (int i = this_c + 1; i < vic_c; i++)
-				if (map[i][this_r] == true)
+				if (map[this_r][i] == true)
 					++sum;
 		}
 		if (sum == 1)
@@ -153,11 +151,12 @@ bool Piece::Is_Move(int r, int c)
 
 void Piece::Move(int r, int c)
 {
-	map[this->Get_row()][this->Get_col()] = false;
+	map[row][col] = false;
 	this->Location = Point(Loca_c[c], Loca_r[r]);
-	this->col = c;
-	this->row = r;
-	map[this->Get_row()][this->Get_col()] = true;
+	col = c;
+	row = r;
+	map[row][col] = true;
+	this->BackColor = Color::Transparent;
 }
 Image ^Piece::Get_Image()
 {

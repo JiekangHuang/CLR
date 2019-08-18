@@ -1,6 +1,3 @@
 ﻿  Board.cpp
-  MyForm.cpp
-  正在產生程式碼...
-c:\users\s2862\desktop\clr\chess_game -copy\chess_game\board.cpp(218): warning C4715: 'Board::Find': 不是所有控制路徑都傳回值
   Board.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
-  Chess_Game.vcxproj -> C:\Users\s2862\Desktop\CLR\Chess_Game -copy\Debug\Chess_Game.exe
+  Chess_Game.vcxproj -> E:\CLR\Chess_Game -copy\Debug\Chess_Game.exe

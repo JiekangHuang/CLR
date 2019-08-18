@@ -1,3 +1,4 @@
 ﻿  MyForm.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   MyForm.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
-  Calc Tool.vcxproj -> C:\Users\s2862\Desktop\CLR\Calc Tool\Debug\Calc Tool.exe
+  Calc Tool.vcxproj -> E:\CLR\Calc Tool\Debug\Calc Tool.exe

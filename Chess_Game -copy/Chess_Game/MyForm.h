@@ -74,7 +74,7 @@ namespace ChessGame {
 			this->reset->TabIndex = 1;
 			this->reset->Text = L"重新開始";
 			this->reset->UseVisualStyleBackColor = false;
-			this->reset->Click += gcnew System::EventHandler(this, &MyForm::reset_Click);
+			this->reset->Click += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			//
 			// Exit
 			//
@@ -125,6 +125,15 @@ namespace ChessGame {
 			Controls->AddRange(piece[i]);
 		//將"顯示玩家物件"動態加入MyForm
 		Controls->Add(board->Get_curPyShow());
+		//將所有棋子物件加入Click事件集合
+		for (int i = 0; i < Row; i++)
+			for (int j = 0; j < Col; j++)
+				piece[i][j]->Click += gcnew EventHandler(this, &MyForm::piece_Click);
+	}
+	private: System::Void piece_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		Piece ^piece = (Piece^)sender;
+		board->Action(piece);
 	}
 	private: System::Void Mouse_Click(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
 	{
