@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
 #include "Piece.h"
 #include "Const_Piece.h"
+#include <cliext/vector>
 
 ref class dead
 {
@@ -51,6 +51,7 @@ private:
 	bool Is_Win();
 public:
 	Board();
+	~Board();
 	//初始化棋盤(洗牌)
 	void Init(void);
 	//觸發棋子

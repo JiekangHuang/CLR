@@ -1,3 +1,3 @@
-﻿  Board.cpp
+﻿  Piece.cpp
   Board.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
   Chess_Game.vcxproj -> E:\CLR\Chess_Game -copy\Debug\Chess_Game.exe

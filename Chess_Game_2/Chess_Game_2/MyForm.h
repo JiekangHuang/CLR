@@ -14,6 +14,7 @@ namespace ChessGame2 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
+		PictureBox ^newbox;
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -34,7 +35,8 @@ namespace ChessGame2 {
 			}
 		}
 	private: System::Windows::Forms::Button^  reset;
-	private: System::Windows::Forms::Button^  Exit;
+	private: System::Windows::Forms::Button^  button1;
+
 	protected:
 
 	protected:
@@ -54,7 +56,7 @@ namespace ChessGame2 {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->reset = (gcnew System::Windows::Forms::Button());
-			this->Exit = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			//
 			// reset
@@ -71,20 +73,15 @@ namespace ChessGame2 {
 			this->reset->UseVisualStyleBackColor = false;
 			this->reset->Click += gcnew System::EventHandler(this, &MyForm::reset_Click);
 			//
-			// Exit
+			// button1
 			//
-			this->Exit->BackColor = System::Drawing::Color::Tan;
-			this->Exit->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Exit->Font = (gcnew System::Drawing::Font(L"º–∑¢≈È", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(136)));
-			this->Exit->ForeColor = System::Drawing::Color::DarkRed;
-			this->Exit->Location = System::Drawing::Point(1072, 604);
-			this->Exit->Name = L"Exit";
-			this->Exit->Size = System::Drawing::Size(105, 50);
-			this->Exit->TabIndex = 3;
-			this->Exit->Text = L"µ≤ßÙ";
-			this->Exit->UseVisualStyleBackColor = false;
-			this->Exit->Click += gcnew System::EventHandler(this, &MyForm::Exit_Click);
+			this->button1->Location = System::Drawing::Point(1078, 585);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(94, 64);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			//
 			// MyForm
 			//
@@ -93,7 +90,7 @@ namespace ChessGame2 {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1184, 661);
-			this->Controls->Add(this->Exit);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->reset);
 			this->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
@@ -107,6 +104,19 @@ namespace ChessGame2 {
 #pragma endregion
 	private: System::Void reset_Click(System::Object^  sender, System::EventArgs^  e)
 	{
+		newbox = gcnew PictureBox;
+		newbox->Location = Point(100, 100);
+		newbox->Size = System::Drawing::Size(95, 90);
+		newbox->BackgroundImageLayout = ImageLayout::Stretch;
+		newbox->SizeMode = PictureBoxSizeMode::StretchImage;
+		newbox->Image = System::Drawing::Image::FromFile("Image\\1-1.png");
+		Controls->Add(newbox);
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e)
+	{
+		Controls->Remove(newbox);
+		//Controls->Clear();
+		//delete newbox;
 	}
 	private: System::Void Exit_Click(System::Object^  sender, System::EventArgs^  e)
 	{

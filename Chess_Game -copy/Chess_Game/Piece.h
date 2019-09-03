@@ -2,6 +2,7 @@
 #include "Const_Piece.h"
 #include <vcclr.h>
 #include <cmath>
+#include <cliext/vector>
 
 using namespace System;
 using namespace System::Drawing;
@@ -28,15 +29,18 @@ private:
 	int row, col;
 	//棋盤地圖(紀錄所有棋盤上的棋子位置)
 	static array<array<bool>^> ^map;
+
 	//定義棋子start位置&間格大小
 	const int static_x = 171, static_y = 137, add_x = 107, add_y = 99;
 
 	static array<int> ^Loca_c;
 	static array<int> ^Loca_r;
+	static System::Drawing::Image ^close_image = System::Drawing::Image::FromFile("Image\\close.png");
 
 public:
 	Piece(int r, int c);
 	Piece() {}
+	~Piece() {}
 	//初始化棋子內容
 	void Init_Data(Const_Piece ^const_data);
 	void Init();

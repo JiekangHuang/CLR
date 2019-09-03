@@ -73,6 +73,13 @@ Board::Board()
 		piece[i] = gcnew array<Piece^>(8);
 	this->Init();
 }
+Board::~Board()
+{
+	for (int r = 0; r < Row; r++)
+		for (int c = 0; c < Col; c++)
+			delete piece[r][c];
+	delete curPyShow;
+}
 void Board::Init(void)
 {
 	this->curPyShow->BackColor = Color::Tan;
@@ -91,7 +98,7 @@ void Board::Init(void)
 	//建立32個亂數
 	Random^ Rand = gcnew Random();
 
-	std::vector<int> vec;
+	cliext::vector<int> vec;
 	int s_num = Chess_num - 1, idx = 0;;
 	for (int i = 0; i < Chess_num; i++)
 		vec.push_back(i);
@@ -169,8 +176,7 @@ void Board::Action(Piece ^cur)
 			cur_piece->Size = System::Drawing::Size(50, 50);
 			this->pre_piece->Move(cur_piece->Get_row(), cur_piece->Get_col());
 			this->Exch(cur_piece);
-			if (this->Is_Win())
-				this->Init();
+			this->Is_Win();
 		}
 	}
 }

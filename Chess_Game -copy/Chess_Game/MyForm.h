@@ -114,10 +114,10 @@ namespace ChessGame {
 #pragma endregion
 	private: System::Void reset_Click(System::Object^  sender, System::EventArgs^  e)
 	{
-		board->Init();
 	}
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)
 	{
+		delete board;
 		board = gcnew Board();
 		array<array<Piece^>^>  ^piece = board->Get_Piece();
 		//將棋盤上的的棋子動態加入MyForm

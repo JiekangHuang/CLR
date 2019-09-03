@@ -31,6 +31,7 @@ void Piece::Init()
 	map = gcnew array<array<bool>^>(4);
 	for (int i = 0; i < 4; i++)
 		map[i] = gcnew array<bool>(8);
+
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 8; j++)
 			map[i][j] = true;
@@ -40,7 +41,7 @@ void Piece::Init()
 	this->power = -1;
 	this->open = false;
 	this->BackColor = Color::Transparent;
-	this->Image = System::Drawing::Image::FromFile("Image\\close.png");
+	this->Image = this->close_image;
 }
 
 bool Piece::Attack(Piece ^victim)
